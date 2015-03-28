@@ -1,6 +1,6 @@
 import xbmcaddon, util, urllib2, string, json
 
-addon = xbmcaddon.Addon('plugin.video.nottstv')
+addon = xbmcaddon.Addon('plugin.video.eetv')
 
 
 #util.playMedia(addon.getAddonInfo('name'),addon.getAddonInfo('icon'),'http://c.brightcove.com/services/mobile/streaming/index/rendition.m3u8?assetId=4135572682001')
@@ -12,7 +12,7 @@ def playEpisode(id,thumb):
         videolinks = json.loads(content)
         util.playMedia(videolinks['name'],thumb,videolinks['IOSRenditions'][0]['url'])
     else:
-        util.showError('plugin.video.nottstv', 'Could not open URL %s to create menu' % (url))	
+        util.showError('plugin.video.eetv', 'Could not open URL %s to create menu' % (url))	
     pass
 def getTaggedEpisodes(tag):
     if tag == "now%20and%20then":
@@ -33,7 +33,7 @@ def getTaggedEpisodes(tag):
             util.addMenuItem(params['label'], link, thumb, thumb, False)
         util.endListing()
     else:
-        util.showError('plugin.video.nottstv', 'Could not open URL %s to create menu' % (url))	
+        util.showError('plugin.video.eetv', 'Could not open URL %s to create menu' % (url))	
     pass
 
 def playVideo(params):
@@ -71,7 +71,7 @@ def buildMenu():
         util.endListing()
 
     else:
-        util.showError('plugin.video.nottstv', 'Could not open URL %s to create menu' % (url))	
+        util.showError('plugin.video.eetv', 'Could not open URL %s to create menu' % (url))	
     pass
 
     
