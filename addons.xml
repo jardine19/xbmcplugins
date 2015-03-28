@@ -19,10 +19,10 @@
 
 <addon id="plugin.video.nottstv"
        name="Notts TV On Demand"
-       version="0.0.2"
+       version="0.0.3"
        provider-name="kevjs1982">
     <requires>
-        <import addon="xbmc.python" version="1.0"/>
+        <import addon="xbmc.python" version="1.14.0"/>
     </requires>
     <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>video</provides>
