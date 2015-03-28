@@ -78,7 +78,7 @@ def makeLink(params, baseUrl=sys.argv[0]):
     return baseUrl + '?' +urllib.urlencode(dict([k.encode('utf-8'),unicode(v).encode('utf-8')] for k,v in params.items()))
 
 
-def addMenuItem(caption, link, icon=None, thumbnail=None, folder=False):
+def addMenuItem(caption, link, icon=None, thumbnail=None, folder=False,plot = ""):
     """
     Add a menu item to the xbmc GUI
     
@@ -92,7 +92,7 @@ def addMenuItem(caption, link, icon=None, thumbnail=None, folder=False):
     Returns True if the item is successfully added, False otherwise
     """
     listItem = xbmcgui.ListItem(unicode(caption), iconImage=icon, thumbnailImage=thumbnail)
-    listItem.setInfo(type="Video", infoLabels={ "Title": caption })
+    listItem.setInfo(type="Video", infoLabels={ "Title": caption, "Plot" : plot })
     return xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=link, listitem=listItem, isFolder=folder)
 def playArqiva(params):
     addon = xbmcaddon.Addon()
