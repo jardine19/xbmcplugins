@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="plugin.video.nottstv"
+       name="Notts TV On Demand"
+       version="0.0.1"
+       provider-name="kevjs1982">
+    <requires>
+        <import addon="xbmc.python" version="1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>Watch Notts TV On Demand</summary>
+        <description>This XBMC plugin enables the playing of TV catchup content from the Notts TV On Demand website.</description>
+    </extension>
+</addon>
+
+<addon id="repository.kevjs1982" name="kevjs1982 Add-on Repository" version="1.0.0" provider-name="kevjs1982">
+	<extension point="xbmc.addon.repository" name="kevjs1982 Add-on Repository">
+		<info compressed="false">https://raw.githubusercontent.com/kevjs1982/xbmcplugins/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/kevjs1982/xbmcplugins/master/addons.xml.md5</checksum>
+		<datadir zip="false">https://raw.githubusercontent.com/kevjs1982/xbmcplugins/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from kevjs1982 Add-on Repository</summary>
+		<description>Video plug-ins for XBMC</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+</addons>
