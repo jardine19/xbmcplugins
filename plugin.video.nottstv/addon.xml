@@ -14,4 +14,10 @@
         <summary>Watch Notts TV On Demand</summary>
         <description>This XBMC plugin enables the playing of TV catchup content from the Notts TV On Demand website.</description>
     </extension>
+	
+	<extension point="xbmc.addon.repository" name="Notts TV Updater">
+    <info compressed="true">https://raw.githubusercontent.com/kevjs1982/xbmcplugins/master/plugin.video.nottstv/addon.xml</info>
+    <checksum>https://raw.githubusercontent.com/kevjs1982/xbmcplugins/master/plugin.video.nottstv/addon.xml.md5</checksum>
+    <datadir zip="true">https://raw.githubusercontent.com/kevjs1982/xbmcplugins/master/</datadir>
+  </extension>
 </addon>
