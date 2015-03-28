@@ -1,88 +1,83 @@
 import xbmcaddon, util, urllib2, string, json
-
 addon = xbmcaddon.Addon('plugin.video.eetv')
 
-
-#util.playMedia(addon.getAddonInfo('name'),addon.getAddonInfo('icon'),'http://c.brightcove.com/services/mobile/streaming/index/rendition.m3u8?assetId=4135572682001')
-def playEpisode(id,thumb):
-    url = "http://api.brightcove.com/services/library?command=find_video_by_id&video_id=" + id + "&video_fields=name,length,iosrenditions&token=1N4JCL3KisuyvNlDIPdrJGpatQ1dVXuaCRtD88vFyCqx6Va1G_yGtg..&sort_by=encodingRate:asc"
-    response = urllib2.urlopen(url)
+def showLiveTV():
+    print "Show Live TV"
+    ipaddress = addon.getSetting("ipaddress")
+    playlist = "http://" + ipaddress + "/Live/Channels/getList?tvOnly=0&avoidHD=0&allowHidden=0&fields=name,id,zap,isDVB,hidden,rank,isHD,logo";
+    print "Playlist at " + playlist
+    response = urllib2.urlopen(playlist)
     if response and response.getcode() == 200:
-        content = response.read()
-        videolinks = json.loads(content)
-        util.playMedia(videolinks['name'],thumb,videolinks['IOSRenditions'][0]['url'])
-    else:
-        util.showError('plugin.video.eetv', 'Could not open URL %s to create menu' % (url))	
-    pass
-def getTaggedEpisodes(tag):
-    if tag == "now%20and%20then":
-        url = "http://api.brightcove.com/services/library?command=search_videos&token=1N4JCL3KisuyvNlDIPdrJGpatQ1dVXuaCRtD88vFyCqx6Va1G_yGtg..&video_fields=id,name,videoStillURL,tags&sort_by=start_date:desc&any=custom_fields:" + tag
-    else:
-        url = "http://api.brightcove.com/services/library?command=search_videos&token=1N4JCL3KisuyvNlDIPdrJGpatQ1dVXuaCRtD88vFyCqx6Va1G_yGtg..&video_fields=id,name,videoStillURL,tags&sort_by=start_date:desc&all=tag:" + tag
-    response = urllib2.urlopen(url)
-    if response and response.getcode() == 200:
-        content = response.read()
-        episodes = json.loads(content)
-        for episode in episodes['items']:
-            params={'episode':1}
-            params['label']= episode['name']
-            params['id']= episode['id']
-            params['thumb']=episode['videoStillURL']
-            thumb = episode['videoStillURL']
-            link = util.makeLink(params)
-            util.addMenuItem(params['label'], link, thumb, thumb, False)
+        channels = json.loads(response.read())
+        for channel in channels:
+            if channel['hidden'] == False and (channel['zap'] < 225 or channel['zap'] > 300):
+                params={'playlivetv':1}
+                params['label']= str(channel['zap']) + ' ' + channel['name']
+                params['url']= "http://" + ipaddress + "/Live/Channels/get?channelId=" + channel['id']
+                params['id'] = channel['id']
+                if channel.has_key('logo') == True:
+                    params['thumb']= channel['logo']
+                else:
+                    params['thumb']= "http://" + ipaddress + "/Live/Channels/getLogo?zap=" + str(channel['zap'])
+                params['zap']= channel['zap']
+                thumb = params['thumb']
+                util.addMenuItem(params['label'], util.makeLink(params), thumb, thumb, False)
         util.endListing()
     else:
-        util.showError('plugin.video.eetv', 'Could not open URL %s to create menu' % (url))	
+        util.showError('plugin.video.nottstv', 'Could not open URL %s to create menu' % (url))	
     pass
-
-def playVideo(params):
+def showRecordings():
     pass
-def listEpisodes(tag):
-    getTaggedEpisodes(tag.replace("-","%20").replace("/",""))
+def showArqivaMenu():
+    util.addArqiva("CCTV News","http://stream.arqiva.tv/cctv-news",'thumbs/cctv_news.png')
+    util.addArqiva("CCTV-4","http://stream.arqiva.tv/cctv-4",'/thumbs/cctv-4.png')
+    util.addArqiva("CCTV-9 Documentary","http://stream.arqiva.tv/cctv-9",'/thumbs/cctv-9.png')
+    util.addArqiva("Chatbox","http://stream.arqiva.tv/chatbox",'/thumbs/chat_box.png')
+    util.addArqiva("Gay Network","http://stream.arqiva.tv/gaynet",'/thumbs/gay_network.png')
+    util.addArqiva("Motors TV","http://stream.arqiva.tv/motorstv",'/thumbs/motors_tv_uk.png')
+    util.addArqiva("QVC Beauty","http://stream.arqiva.tv/qvc-beau",'/thumbs/qvc_beauty.png')
+    util.addArqiva("QVC Extra","http://stream.arqiva.tv/qvc-extra",'/thumbs/qvc_extra.png')
+    util.addArqiva("QVC Plus","http://stream.arqiva.tv/qvc-plus",'/thumbs/qvc.png')
+    util.addArqiva("QVC Style","http://stream.arqiva.tv/qvc-style",'/thumbs/qvc_style.png')
+    util.addArqiva("Racing UK (Preview)","http://stream.arqiva.tv/racinguk",'/thumbs/racing_uk.png')
+    util.addArqiva("RT Doc","http://stream.arqiva.tv/rt-doc",'/thumbs/rtd.png')
+    util.addArqiva("SBN TV (Sonlife)","http://stream.arqiva.tv/sbntvuk",'/thumbs/sonlife.png')
+    util.addArqiva("Vintage TV",'http://stream.arqiva.tv/vintagetv','/thumbs/vintage_tv.png')
+    util.endListing()
     pass
+def showMainMenu():
+    params={'livetv':1,'foo':'bar'}
+    link = util.makeLink(params)
+    util.addMenuItem('Live TV.', link, 'DefaultVideo.png', 'DefaultVideo.png', True)
 
-def buildMenu():
-    url = "http://nottstv.com/programmes/"
-    response = urllib2.urlopen(url)
-    if response and response.getcode() == 200:
-        content = response.read()
-        params={'programme':1}
-        params['label']= "EE TV"
-        params['tag']="news"
-        link = util.makeLink(params)
-        util.addMenuItem(params['label'], link, 'DefaultVideo.png', 'DefaultVideo.png', True)
-        programmes = util.extractAll(content, 'http://nottstv.com/programmes/','</a>')
-        for programmelist in programmes:
-            if "jQuery" in programmelist: continue
-            programme = programmelist.split('">')
-            if programme[1] == "Programmes": continue
-            params={'programme':1}
-            params['label']=programme[1]
-            params['tag']=programme[0]
-            link = util.makeLink(params)
-            util.addMenuItem(params['label'], link, 'DefaultVideo.png', 'DefaultVideo.png', True)
-        util.addCategory('>> Current Affairs','current-affairs')
-        util.addCategory('>> Entertainment','entertainment')
-        util.addCategory('>> Lifestyle','lifestyle')
-        util.addCategory('>> Sport','sport')
-        util.addCategory('>> Music','music')
-        util.addCategory('>> Specials','specials')
-        util.endListing()
-
-    else:
-        util.showError('plugin.video.eetv', 'Could not open URL %s to create menu' % (url))	
+    params={'arqivamenu':1}
+    link = util.makeLink(params)
+    util.addMenuItem('Arqiva Connect', link, 'DefaultVideo.png', 'DefaultVideo.png', True)
+    params={'recordings':1}
+    link = util.makeLink(params)
+    util.addMenuItem('Recordings', link, 'DefaultVideo.png', 'DefaultVideo.png', True)
+    util.endListing()
     pass
 
     
 parameters = util.parseParameters()
+print "Running"
+print parameters
 if 'play' in parameters:
     playVideo(parameters['play'])
+elif 'arqiva' in parameters:
+    util.playArqiva(parameters)
+elif 'recordings' in parameters:
+    showRecordings(parameters)
+elif 'livetv' in parameters:
+    showLiveTV()
+elif 'playlivetv' in parameters:
+    util.playEE(parameters)
 elif 'programme' in parameters:
     listEpisodes(parameters['tag'])
 elif 'episode' in parameters:
     playEpisode(parameters['id'],parameters['thumb'])
+elif 'arqivamenu' in parameters:
+    showArqivaMenu()
 else:
-    buildMenu()
-
-
+    showMainMenu()

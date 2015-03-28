@@ -94,12 +94,31 @@ def addMenuItem(caption, link, icon=None, thumbnail=None, folder=False):
     listItem = xbmcgui.ListItem(unicode(caption), iconImage=icon, thumbnailImage=thumbnail)
     listItem.setInfo(type="Video", infoLabels={ "Title": caption })
     return xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=link, listitem=listItem, isFolder=folder)
-
+def playArqiva(params):
+    addon = xbmcaddon.Addon()
+    path = addon.getAddonInfo('path')
+    playMedia(params['label'],path + "/" + params['thumb'], params['url'])
+    pass
+def playEE(params):
+    addon = xbmcaddon.Addon()
+    path = addon.getAddonInfo('path')
+    playMedia(params['label'], params['thumb'], params['url'])
+    pass
 def endListing():
     """
     Signals the end of the menu listing
     """
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
+    pass
+def addArqiva(label,url,thumb):
+    addon = xbmcaddon.Addon()
+    path = addon.getAddonInfo('path')
+    params={'arqiva':1}
+    params['label']= label
+    params['url']=url
+    params['thumb']=thumb
+    link = makeLink(params)
+    addMenuItem(params['label'], link, path + "/" +thumb,path + "/" +thumb, False)
     pass
 def addCategory(caption,tag):
     params={'programme':1}

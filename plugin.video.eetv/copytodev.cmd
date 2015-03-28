@@ -1,0 +1,1 @@
+copy *.* C:\Users\kev\AppData\Roaming\Kodi\addons\plugin.video.eetv\
