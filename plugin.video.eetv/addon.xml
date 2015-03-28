@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.eetv"
+       name="EE TV"
+       version="0.0.2"
+       provider-name="kevjs1982">
+    <requires>
+        <import addon="xbmc.python" version="2.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>Watch EE TV</summary>
+        <description>This XBMC plugin enables the playing of TV catchup content from an EE TV STB.</description>
+    </extension>
+</addon>
