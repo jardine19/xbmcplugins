@@ -47,13 +47,14 @@ def listEpisodes(tag):
 def buildMenu():
     url = "http://nottstv.com/programmes/"
     response = urllib2.urlopen(url)
+    path = addon.getAddonInfo('path')
     if response and response.getcode() == 200:
         content = response.read()
         params={'programme':1}
         params['label']= "Notts TV News Reports"
         params['tag']="news"
         link = util.makeLink(params)
-        util.addMenuItem(params['label'], link, 'DefaultVideo.png', 'DefaultVideo.png', True)
+        util.addMenuItem(params['label'], link, 'news.png', path + '/images/news.png', True)
         programmes = util.extractAll(content, 'http://nottstv.com/programmes/','</a>')
         for programmelist in programmes:
             if "jQuery" in programmelist: continue
@@ -63,11 +64,23 @@ def buildMenu():
             params['label']=programme[1]
             params['tag']=programme[0]
             link = util.makeLink(params)
-            util.addMenuItem(params['label'], link, 'DefaultVideo.png', 'DefaultVideo.png', True)
+            thumb = 'DefaultVideo.png'
+            if programme[1] == 'Nottingham Now and Then': thumb = path + '/images/nowandthen.png'
+            if programme[1] == 'Mass Bolero': thumb = path + '/images/massbolero.png'
+            if programme[1] == 'The 6:30 Show': thumb = path + '/images/630show.png'
+            if programme[1] == 'Channel 8 Debate': thumb = path + '/images/8debate.png'
+            if programme[1] == 'Day in the Life': thumb = path + '/images/dayinthelife.png'
+            if programme[1] == 'Inside Industry Week': thumb = path + '/images/insideindustry.jpg'
+            if programme[1] == 'Noise Floor': thumb = path + '/images/noisefloor.png'
+            if programme[1] == 'The Boot Room': thumb = path + '/images/bootroom.png'
+            if programme[1] == 'The Locker Room': thumb = path + '/images/lockerroom.png'
+            if programme[1] == 'Working Week': thumb = path + '/images/workingweek.png'
+            print path
+            util.addMenuItem(params['label'], link, thumb, thumb, True)
         util.addCategory('>> Current Affairs','current-affairs')
         util.addCategory('>> Entertainment','entertainment')
         util.addCategory('>> Lifestyle','lifestyle')
-        util.addCategory('>> Sport','sport')
+        util.addCategory('>> Sport','sport',path + '/images/sport.jpg')
         util.addCategory('>> Music','music')
         util.addCategory('>> Specials','specials')
         util.endListing()

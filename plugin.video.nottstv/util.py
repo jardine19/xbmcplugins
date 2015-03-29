@@ -101,10 +101,10 @@ def endListing():
     """
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
     pass
-def addCategory(caption,tag):
+def addCategory(caption,tag,thumb='DefaultVideo.png'):
     params={'programme':1}
     params['label']= caption
     params['tag']=tag
     link = makeLink(params)
-    addMenuItem(params['label'], link, 'DefaultVideo.png', 'DefaultVideo.png', True)
+    addMenuItem(params['label'], link, thumb,thumb, True)
     pass

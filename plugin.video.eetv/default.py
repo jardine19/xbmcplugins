@@ -38,7 +38,7 @@ def playRecording(params):
         else:
             url = "http://" + ipaddress + "/PVR/Records/getVideo?sessionId=" + ticket['id']
             params['url'] = url
-            params['label'] = params['label'] + " " + start
+            params['label'] = params['label']
             params['thumb'] = params['icon']
             util.playEE(params)
     else:

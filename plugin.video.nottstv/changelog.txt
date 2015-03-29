@@ -1,0 +1,6 @@
+0.1.0
+- Added Programme show graphics, publicly released so a bump in version number.
+0.0.4
+- Watch programmes
+- Watch by category
+- Watch news
