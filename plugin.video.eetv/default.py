@@ -1,14 +1,12 @@
-import xbmcaddon, util, urllib2, string, json
+import xbmcaddon, util, urllib2, string, json, datetime
 addon = xbmcaddon.Addon('plugin.video.eetv')
 
 def showLiveTV():
-    #print "Show Live TV"
     ipaddress = addon.getSetting("ipaddress")
     if ipaddress == '':
         xbmc.executebuiltin('XBMC.Notification(Info:,"IP Address Not Set",3000,'+addon.getAddonInfo('icon')+')')
     else:
         playlist = "http://" + ipaddress + "/Live/Channels/getList?tvOnly=0&avoidHD=0&allowHidden=0&fields=name,id,zap,isDVB,hidden,rank,isHD,logo"
-        #print "Playlist at " + playlist
         response = urllib2.urlopen(playlist)
         if response and response.getcode() == 200:
             channels = json.loads(response.read())
@@ -31,15 +29,18 @@ def showLiveTV():
     pass
 def playRecording(params):
     ipaddress = addon.getSetting("ipaddress")
-    util.notify('plugin.video.eetv',str(params['id']))	
     recording = "http://" + ipaddress + "/PVR/Records/session?recordId=" + str(params['id'])
     response = urllib2.urlopen(recording)
     if response and response.getcode() == 200:
         ticket = json.loads(response.read())
-        print params
-        params['url'] = "http://" + ipaddress + "/PVR/Records/getVideo?sessionId=" + ticket['id']
-        params['thumb'] = params['icon']
-        util.playEE(params)
+        if ticket.has_key('pcLockReason'):
+            util.notify('plugin.video.eetv',"Unable to Play " + ticket['pcLockReason'])
+        else:
+            url = "http://" + ipaddress + "/PVR/Records/getVideo?sessionId=" + ticket['id']
+            params['url'] = url
+            params['label'] = params['label'] + " " + start
+            params['thumb'] = params['icon']
+            util.playEE(params)
     else:
         util.notify('plugin.video.eetv', 'Could not Get Playback Token' % (url))	
     pass
@@ -55,7 +56,6 @@ def showRecordings():
             recordings = json.loads(response.read())
             # Need to sort by event.name
             for rec in recordings:
-                #print rec
                 params={'playrecording':1}
                 params['id'] = rec['id']
                 if rec['event'].has_key('icon'):
@@ -68,48 +68,15 @@ def showRecordings():
                 else:
                     params['plot'] = ""
                 params['label'] = rec['event']['name']
+                start = datetime.datetime.fromtimestamp(rec['event']['startTime'])
+                start = start.strftime("%d/%m/%Y %H:%M")
+                params['label'] = params['label'] + " : " + start
                 thumb = params['icon']
                 util.addMenuItem(params['label'], util.makeLink(params), thumb, thumb, False, params['plot'])
 
             util.endListing()
-            #channels = json.loads(response.read())
-            #for channel in channels:
-            #    if channel['hidden'] == False and (channel['zap'] < 225 or channel['zap'] > 300):
-            #        params={'playlivetv':1}
-            #        params['label']= str(channel['zap']) + ' ' + channel['name']
-            #        params['url']= "http://" + ipaddress + "/Live/Channels/get?channelId=" + channel['id']
-            ##        params['id'] = channel['id']
-            #        if channel.has_key('logo') == True:
-            #            params['thumb']= channel['logo']
-            #        else:
-            #            params['thumb']= "http://" + ipaddress + "/Live/Channels/getLogo?zap=" + str(channel['zap'])
-            #        params['zap']= channel['zap']
-            #        thumb = params['thumb']
-            #        util.addMenuItem(params['label'], util.makeLink(params), thumb, thumb, False)
-            #util.endListing()
-            #util.addMenuItem(params['label'], util.makeLink(params), thumb, thumb, False)
         else:
             xbmc.executebuiltin('XBMC.Notification(Info:,"Is the EE Box Turned On?",3000,'+addon.getAddonInfo('icon')+')')
-    '''    
-
-
-							epInfo = typeof(rec.event.episodeInfo)  == 'undefined' ? '' : rec.event.episodeInfo;
-							
-							html += "<td>" + rec.event.name + "</td>";
-							html += "<td>" + rec.event.channelName + "</td>";
-							html += "<td>" + rec.event.text + "<br>" + epInfo + "</td>";
-							html += "<td><a href='javascript:eePlayRecording(\""+rec.id+"\")'><img src='assetts/play_tv.png' title='Play on EE TV'></a></td>";
-							//html += "<td onclick='eeDownloadRecording(\""+rec.id+"\")'>Download</td>";
-							html += "<td><a href='download.php?addr="+encodeURIComponent(ee_tv_box.addr) +"&id=" + rec.id + "'><img src='assetts/download.png' title='Download'></a></td>";
-							html += "<td><a target='eetv' href='download.php?view&addr="+encodeURIComponent(ee_tv_box.addr) +"&id=" + rec.id + "'><img src='assetts/play.png' title='Play in New Window'></a></td>";
-							html += "<td>" + $.number(rec.duration / 60) + " mins</td>";
-							html += "</tr>";
-						}
-						html += "</table>";
-						$('#recording_contents').html(html);
-					});
-					break;
-    '''
     pass
 def showArqivaMenu():
     util.addArqiva("CCTV News","http://stream.arqiva.tv/cctv-news",'thumbs/cctv_news.png')
