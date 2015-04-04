@@ -688,7 +688,7 @@
 						<onright>61</onright>
 						<onup>9004</onup>
 						<ondown>9004</ondown>
-						<control type="label" id="453">
+						<control type="label" id="473">
 							<width>750</width>
 							<height>45</height>
 							<font>font13_title</font>
@@ -698,7 +698,7 @@
 							<align>left</align>
 							<aligny>center</aligny>
 						</control>
-						<control type="button" id="455">
+						<control type="button" id="475">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -710,7 +710,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(LyricScript_Path,xbmc.python.lyrics)</onclick>
 						</control>
-						<control type="button" id="456">
+						<control type="button" id="476">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -843,7 +843,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton9,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="450">
+						<control type="button" id="420">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -855,10 +855,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton10,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						
-						
-						
-						<control type="button" id="451">
+						<control type="button" id="421">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -870,7 +867,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton11,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="452">
+						<control type="button" id="422">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -882,7 +879,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton12,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="453">
+						<control type="button" id="423">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -894,7 +891,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton13,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="454">
+						<control type="button" id="424">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -906,7 +903,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton14,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="455">
+						<control type="button" id="425">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -918,7 +915,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton15,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="456">
+						<control type="button" id="426">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -932,7 +929,7 @@
 						</control>
 						
 						
-						<control type="button" id="457">
+						<control type="button" id="427">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -944,7 +941,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton17,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="458">
+						<control type="button" id="428">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -956,7 +953,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton18,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="459">
+						<control type="button" id="429">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -968,10 +965,11 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeVideosButton19,xbmc.addon.video,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="460">
+						<control type="button" id="430">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
+							<ondown>421</ondown>
 							<label>$LOCALIZE[24000] [B]20[/B]</label>
 							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeVideosButton20))][/COLOR]</label2>
 							<textcolor>grey2</textcolor>
@@ -1004,7 +1002,7 @@
 						
 						
 
-						<control type="label" id="420">
+						<control type="label" id="440">
 							<width>750</width>
 							<height>45</height>
 							<font>font13_title</font>
@@ -1014,7 +1012,7 @@
 							<align>left</align>
 							<aligny>center</aligny>
 						</control>
-						<control type="button" id="421">
+						<control type="button" id="441">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1026,7 +1024,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeMusicButton1,xbmc.addon.audio,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="422">
+						<control type="button" id="442">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1038,7 +1036,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeMusicButton2,xbmc.addon.audio,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="423">
+						<control type="button" id="443">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1050,7 +1048,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeMusicButton3,xbmc.addon.audio,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="424">
+						<control type="button" id="444">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1062,7 +1060,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeMusicButton4,xbmc.addon.audio,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="425">
+						<control type="button" id="445">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1075,7 +1073,7 @@
 							<onclick>Skin.SetAddon(HomeMusicButton5,xbmc.addon.audio,xbmc.addon.executable)</onclick>
 						</control>
 
-						<control type="label" id="430">
+						<control type="label" id="450">
 							<width>750</width>
 							<height>45</height>
 							<font>font13_title</font>
@@ -1085,7 +1083,7 @@
 							<align>left</align>
 							<aligny>center</aligny>
 						</control>
-						<control type="button" id="431">
+						<control type="button" id="451">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1097,7 +1095,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomePictureButton1,xbmc.addon.image,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="432">
+						<control type="button" id="452">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1109,7 +1107,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomePictureButton2,xbmc.addon.image,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="433">
+						<control type="button" id="453">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1121,7 +1119,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomePictureButton3,xbmc.addon.image,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="434">
+						<control type="button" id="454">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1133,7 +1131,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomePictureButton4,xbmc.addon.image,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="435">
+						<control type="button" id="455">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1146,7 +1144,7 @@
 							<onclick>Skin.SetAddon(HomePictureButton5,xbmc.addon.image,xbmc.addon.executable)</onclick>
 						</control>
 
-						<control type="label" id="440">
+						<control type="label" id="460">
 							<width>750</width>
 							<height>45</height>
 							<font>font13_title</font>
@@ -1156,7 +1154,7 @@
 							<align>left</align>
 							<aligny>center</aligny>
 						</control>
-						<control type="button" id="441">
+						<control type="button" id="461">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1168,7 +1166,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeProgramButton1,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="442">
+						<control type="button" id="462">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1180,7 +1178,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeProgramButton2,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="443">
+						<control type="button" id="463">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1192,7 +1190,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeProgramButton3,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="444">
+						<control type="button" id="464">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1204,7 +1202,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeProgramButton4,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="445">
+						<control type="button" id="465">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
@@ -1216,7 +1214,7 @@
 							<texturenofocus>MenuItemNF.png</texturenofocus>
 							<onclick>Skin.SetAddon(HomeProgramButton5,xbmc.addon.executable)</onclick>
 						</control>
-						<control type="button" id="446">
+						<control type="button" id="466">
 							<width>750</width>
 							<height>40</height>
 							<font>font13</font>
