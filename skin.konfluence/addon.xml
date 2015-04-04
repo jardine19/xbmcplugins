@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="skin.konfluence"
-  version="2.5.5"
+  version="2.5.6"
   name="Konfluence"
   provider-name="Jezz_X, Team Kodi">
   <requires>
     <import addon="xbmc.gui" version="5.3.0"/>
 	<import addon="service.skin.widgets" version="0.0.29"/>
+	<import addon="service.skin.favourites" version="6.0.1"/>
   </requires>
   <extension
     point="xbmc.gui.skin"

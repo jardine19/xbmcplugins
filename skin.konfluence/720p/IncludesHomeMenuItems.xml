@@ -322,6 +322,27 @@
 	</include>
 	<include name="HomeAddonItemsVideos">
 		<item>
+			<label>$INFO[Skin.String(CustomFavourite01.Label)]</label>
+			<onclick>$INFO[Skin.String(CustomFavourite01.Path)]</onclick>
+			<icon>$INFO[Skin.String(CustomFavourite01.Icon)]</icon>
+			<thumb>-</thumb>
+			<visible>!IsEmpty(Skin.String(CustomFavourite01.Label))</visible>
+		</item>
+		<item>
+			<label>$INFO[Skin.String(CustomFavourite02.Label)]</label>
+			<onclick>$INFO[Skin.String(CustomFavourite02.Path)]</onclick>
+			<icon>$INFO[Skin.String(CustomFavourite02.Icon)]</icon>
+			<thumb>-</thumb>
+			<visible>!IsEmpty(Skin.String(CustomFavourite02.Label))</visible>
+		</item>
+		<item>
+			<label>$INFO[Skin.String(CustomFavourite03.Label)]</label>
+			<onclick>$INFO[Skin.String(CustomFavourite03.Path)]</onclick>
+			<icon>$INFO[Skin.String(CustomFavourite03.Icon)]</icon>
+			<thumb>-</thumb>
+			<visible>!IsEmpty(Skin.String(CustomFavourite03.Label))</visible>
+		</item>
+		<item>
 			<label>$INFO[system.addontitle(Skin.String(HomeVideosButton1))]</label>
 			<onclick>RunAddon($INFO[Skin.String(HomeVideosButton1)])</onclick>
 			<icon>$INFO[system.addonicon(Skin.String(HomeVideosButton1))]</icon>
@@ -454,7 +475,27 @@
 			<thumb>-</thumb>
 			<visible>!IsEmpty(Skin.String(HomeVideosButton20))</visible>
 		</item>
-		
+		<item>
+			<label>$INFO[Skin.String(CustomFavourite1.Label)]</label>
+			<onclick>$INFO[Skin.String(CustomFavourite1.Path)]</onclick>
+			<icon>$INFO[Skin.String(CustomFavourite1.Icon)]</icon>
+			<thumb>-</thumb>
+			<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+		</item>
+		<item>
+			<label>$INFO[Skin.String(CustomFavourite2.Label)]</label>
+			<onclick>$INFO[Skin.String(CustomFavourite2.Path)]</onclick>
+			<icon>$INFO[Skin.String(CustomFavourite2.Icon)]</icon>
+			<thumb>-</thumb>
+			<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+		</item>
+		<item>
+			<label>$INFO[Skin.String(CustomFavourite3.Label)]</label>
+			<onclick>$INFO[Skin.String(CustomFavourite3.Path)]</onclick>
+			<icon>$INFO[Skin.String(CustomFavourite3.Icon)]</icon>
+			<thumb>-</thumb>
+			<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+		</item>
 	</include>
 	<include name="HomeAddonItemsMusic">
 		<item>
