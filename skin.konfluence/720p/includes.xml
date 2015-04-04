@@ -955,7 +955,7 @@
 		</animation>
 		<hitrect x="0" y="530" w="1280" h="120"/>
 		<left>0</left>
-		<top>190r</top>
+		<top>210r</top>
 		<width>1280</width>
 		<height>200</height>
 		<pagecontrol>-</pagecontrol>
@@ -1013,7 +1013,7 @@
 				<height>120</height>
 				<aspectratio aligny="bottom">keep</aspectratio>
 				<bordertexture border="5">folder-focus.png</bordertexture>
-				<bordersize>3</bordersize>
+				<bordersize>8</bordersize>
 				<texture background="true">$INFO[ListItem.Icon]</texture>
 				<visible>ControlGroup(9002).HasFocus</visible>
 			</control>
