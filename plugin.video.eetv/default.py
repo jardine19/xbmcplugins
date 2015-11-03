@@ -54,6 +54,7 @@ def showRecordings():
         if response and response.getcode() == 200:
             path = addon.getAddonInfo('path')
             recordings = json.loads(response.read())
+            recordings_array = []
             # Need to sort by event.name
             for rec in recordings:
                 params={'playrecording':1}
@@ -71,8 +72,10 @@ def showRecordings():
                 start = datetime.datetime.fromtimestamp(rec['event']['startTime'])
                 start = start.strftime("%d/%m/%Y %H:%M")
                 params['label'] = params['label'] + " : " + start
-                thumb = params['icon']
-                util.addMenuItem(params['label'], util.makeLink(params), thumb, thumb, False, params['plot'])
+                recordings_array.append(params)
+            recordings_array.sort(key=lambda x: x['label'], reverse=False)
+            for rec in recordings_array:
+                util.addMenuItem(rec['label'], util.makeLink(rec), rec['icon'], rec['icon'], False, rec['plot'])
 
             util.endListing()
         else:
