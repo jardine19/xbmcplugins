@@ -1,3 +1,6 @@
+[B]2.5.6[/B]
+Fixed Bugs
+
 [B]2.5.3[/B]
 
 - Updated language files from Transifex

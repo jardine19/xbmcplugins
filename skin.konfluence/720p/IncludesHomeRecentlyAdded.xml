@@ -142,7 +142,7 @@
 							<label>$INFO[Window.Property(RecentMovie.1.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.1.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.1.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.1.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.1.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.1.Title))</visible>
 						</item>
@@ -150,7 +150,7 @@
 							<label>$INFO[Window.Property(RecentMovie.2.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.2.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.2.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.2.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.2.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.2.Title))</visible>
 						</item>
@@ -158,7 +158,7 @@
 							<label>$INFO[Window.Property(RecentMovie.3.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.3.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.3.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.3.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.3.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.3.Title))</visible>
 						</item>
@@ -166,7 +166,7 @@
 							<label>$INFO[Window.Property(RecentMovie.4.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.4.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.4.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.4.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.4.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.4.Title))</visible>
 						</item>
@@ -174,7 +174,7 @@
 							<label>$INFO[Window.Property(RecentMovie.5.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.5.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.5.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.5.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.5.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.5.Title))</visible>
 						</item>
@@ -182,7 +182,7 @@
 							<label>$INFO[Window.Property(RecentMovie.6.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.6.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.6.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.6.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.6.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.6.Title))</visible>
 						</item>
@@ -190,7 +190,7 @@
 							<label>$INFO[Window.Property(RecentMovie.7.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.7.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.7.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.7.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.7.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.7.Title))</visible>
 						</item>
@@ -198,7 +198,7 @@
 							<label>$INFO[Window.Property(RecentMovie.8.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.8.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.8.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.8.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.8.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.8.Title))</visible>
 						</item>
@@ -206,7 +206,7 @@
 							<label>$INFO[Window.Property(RecentMovie.9.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.9.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.9.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.9.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.9.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.9.Title))</visible>
 						</item>
@@ -214,7 +214,7 @@
 							<label>$INFO[Window.Property(RecentMovie.10.Title)]</label>
 							<label2/>
 							<onclick>PlayMedia($ESCINFO[Window.Property(RecentMovie.10.File)])</onclick>
-							<icon>$INFO[Window.Property(RecentMovie.10.Art(poster)))]</icon>
+							<icon>$INFO[Window.Property(RecentMovie.10.Art(poster))]</icon>
 							<thumb>$INFO[Window.Property(RecentMovie.10.Art(poster))]</thumb>
 							<visible>!IsEmpty(Window.Property(RecentMovie.10.Title))</visible>
 						</item>
