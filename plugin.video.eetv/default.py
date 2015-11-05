@@ -50,68 +50,77 @@ def showRecordings(show_series):
 		xbmc.executebuiltin('XBMC.Notification(Info:,"IP Address Not Set",3000,'+addon.getAddonInfo('icon')+')')
 	else:
 		recordings = "http://" + ipaddress + "/PVR/Records/getList?type=regular&avoidHD=0&tvOnly=0"
-		response = urllib2.urlopen(recordings)
-		if response and response.getcode() == 200:
-			path = addon.getAddonInfo('path')
-			recordings = json.loads(response.read())
-			recordings_array = []
-			known_series = {}
-			# Need to sort by event.name
-			for rec in recordings:
-				if rec['event'].has_key('serieId'):
-					series_id = rec['event']['serieId']
-				else:
-					series_id = "n/a"
-				if series_id == show_series or (series_id == 'n/a' and show_series == 'no'):
-					# Showing the series I wish to show, or the episode was not in a series, therefore we want to show the episode
-					params={'playrecording':1}
-					params['id'] = rec['id']
-					if rec['event'].has_key('icon'):
-						params['icon'] = rec['event']['icon']
+		try:
+			response = urllib2.urlopen(recordings)
+			if response and response.getcode() == 200:
+				path = addon.getAddonInfo('path')
+				recordings = json.loads(response.read())
+				recordings_array = []
+				known_series = {}
+				# Need to sort by event.name
+				for rec in recordings:
+					if rec['event'].has_key('serieId'):
+						series_id = rec['event']['serieId']
 					else:
-						params['icon'] = "DefaultVideo.png"
-					
-					if rec['event'].has_key('description'):
-						params['plot'] = rec['event']['description']
-					else:
-						params['plot'] = ""
-					params['label'] = rec['event']['name']
-					start = datetime.datetime.fromtimestamp(rec['event']['startTime'])
-					start = start.strftime("%d/%m/%Y %H:%M")
-					params['label'] = params['label'] + " : " + start
-					start = datetime.datetime.fromtimestamp(rec['event']['startTime'])
-					start = start.strftime("%Y-%m-%d %H:%M")
-					params['sort_label'] = params['label'] + " : " + start
-					recordings_array.append(params)
-				elif known_series.has_key(series_id) == False and show_series == 'no':
-					# Showing a placeholder to the series menu
-					params={'recordings':series_id}
-					params['id'] = rec['id']
-					if rec['event'].has_key('icon'):
-						params['icon'] = rec['event']['icon']
-					else:
-						params['icon'] = "DefaultVideo.png"
-					
-					if rec['event'].has_key('description'):
-						params['plot'] = rec['event']['description']
-					else:
-						params['plot'] = ""
-					params['label'] = rec['event']['name'] + " >> "
-					params['sort_label'] = params['label']
-					recordings_array.append(params)
-					known_series[series_id] = True
+						series_id = "n/a"
+					if series_id == show_series or (series_id == 'n/a' and show_series == 'no'):
+						# Showing the series I wish to show, or the episode was not in a series, therefore we want to show the episode
+						params={'playrecording':1}
+						params['id'] = rec['id']
+						if rec['event'].has_key('icon'):
+							params['icon'] = rec['event']['icon']
+						else:
+							params['icon'] = "DefaultVideo.png"
+						
+						if rec['event'].has_key('description'):
+							params['plot'] = rec['event']['description']
+						else:
+							params['plot'] = ""
+						params['label'] = rec['event']['name']
+						start = datetime.datetime.fromtimestamp(rec['event']['startTime'])
+						start = start.strftime("%d/%m/%Y %H:%M")
+						params['label'] = params['label'] + " : " + start
+						start = datetime.datetime.fromtimestamp(rec['event']['startTime'])
+						start = start.strftime("%Y-%m-%d %H:%M")
+						params['sort_label'] = params['label'] + " : " + start
+						recordings_array.append(params)
+					elif known_series.has_key(series_id) == False and show_series == 'no':
+						# Showing a placeholder to the series menu
+						params={'recordings':series_id}
+						params['id'] = rec['id']
+						if rec['event'].has_key('icon'):
+							params['icon'] = rec['event']['icon']
+						else:
+							params['icon'] = "DefaultVideo.png"
+						
+						if rec['event'].has_key('description'):
+							params['plot'] = rec['event']['description']
+						else:
+							params['plot'] = ""
+						params['label'] = rec['event']['name'] + " >> "
+						params['sort_label'] = params['label']
+						recordings_array.append(params)
+						known_series[series_id] = True
 
-			recordings_array.sort(key=lambda x: x['sort_label'], reverse=False)
-			for rec in recordings_array:
-				print rec['label'] + " : " + rec['sort_label']
-				if rec.has_key('recordings'):
-					isFolder = True
-				else:
-					isFolder = False
-				util.addMenuItem(rec['label'], util.makeLink(rec), rec['icon'], rec['icon'], isFolder, rec['plot'])
-			util.endListing()
-		else:
-			xbmc.executebuiltin('XBMC.Notification(Info:,"Is the EE Box Turned On?",3000,'+addon.getAddonInfo('icon')+')')
+				recordings_array.sort(key=lambda x: x['sort_label'], reverse=False)
+				for rec in recordings_array:
+					print rec['label'] + " : " + rec['sort_label']
+					if rec.has_key('recordings'):
+						isFolder = True
+					else:
+						isFolder = False
+					util.addMenuItem(rec['label'], util.makeLink(rec), rec['icon'], rec['icon'], isFolder, rec['plot'])
+				util.endListing()
+			else:
+				xbmc.executebuiltin('XBMC.Notification(Info:,"Is the EE Box Turned On?",3000,'+addon.getAddonInfo('icon')+')')
+		except urllib2.HTTPError as e:
+			reply = e.read()
+			if reply.find('Error 503'):
+				xbmc.executebuiltin('XBMC.Notification(Info:,"Looks like your EE box is in standby",3000,'+addon.getAddonInfo('icon')+')')
+			else:
+				xbmc.executebuiltin('XBMC.Notification(Info:,"Error : ' + reply + '",10000,'+addon.getAddonInfo('icon')+')')
+			#xbmc.executebuiltin('XBMC.Notification(Info:,"HTTP ERROR Is the EE Box Turned On?",3000,'+addon.getAddonInfo('icon')+')')
+			
 	pass
 def showArqivaMenu():
 	util.addArqiva("CCTV News","http://stream.arqiva.tv/cctv-news",'thumbs/cctv_news.png')
