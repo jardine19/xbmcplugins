@@ -1,3 +1,6 @@
+1.0.0
+- Functionally complete
+- Now prompts to wake the box from standby if the recordings list returns an Error 503
 0.0.8
 - Changes to recordings, group by series and alphabetical
 0.0.6
