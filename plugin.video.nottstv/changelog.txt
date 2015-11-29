@@ -1,3 +1,5 @@
+0.1.1
+- Now requires a user agent
 0.1.0
 - Added Programme show graphics, publicly released so a bump in version number.
 0.0.4
