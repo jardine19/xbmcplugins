@@ -45,8 +45,11 @@ def listEpisodes(tag):
     pass
 
 def buildMenu():
-    url = "http://nottstv.com/programmes/"
-    response = urllib2.urlopen(url)
+    url = "http://nottstv.com/categories/current-affairs/"
+    request = urllib2.Request(url)
+    request.add_header('User-Agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36') 
+    response = urllib2.urlopen(request)
+
     path = addon.getAddonInfo('path')
     if response and response.getcode() == 200:
         content = response.read()
