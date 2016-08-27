@@ -45,51 +45,38 @@ def listEpisodes(tag):
     pass
 
 def buildMenu():
-    url = "http://nottstv.com/categories/current-affairs/"
-    request = urllib2.Request(url)
-    request.add_header('User-Agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36') 
-    response = urllib2.urlopen(request)
-
     path = addon.getAddonInfo('path')
-    if response and response.getcode() == 200:
-        content = response.read()
-        params={'programme':1}
-        params['label']= "Notts TV News Reports"
-        params['tag']="news"
-        link = util.makeLink(params)
-        util.addMenuItem(params['label'], link, 'news.png', path + '/images/news.png', True)
-        programmes = util.extractAll(content, 'http://nottstv.com/programmes/','</a>')
-        for programmelist in programmes:
-            if "jQuery" in programmelist: continue
-            programme = programmelist.split('">')
-            if programme[1] == "Programmes": continue
-            params={'programme':1}
-            params['label']=programme[1]
-            params['tag']=programme[0]
-            link = util.makeLink(params)
-            thumb = 'DefaultVideo.png'
-            if programme[1] == 'Nottingham Now and Then': thumb = path + '/images/nowandthen.png'
-            if programme[1] == 'Mass Bolero': thumb = path + '/images/massbolero.png'
-            if programme[1] == 'The 6:30 Show': thumb = path + '/images/630show.png'
-            if programme[1] == 'Channel 8 Debate': thumb = path + '/images/8debate.png'
-            if programme[1] == 'Day in the Life': thumb = path + '/images/dayinthelife.png'
-            if programme[1] == 'Inside Industry Week': thumb = path + '/images/insideindustry.jpg'
-            if programme[1] == 'Noise Floor': thumb = path + '/images/noisefloor.png'
-            if programme[1] == 'The Boot Room': thumb = path + '/images/bootroom.png'
-            if programme[1] == 'The Locker Room': thumb = path + '/images/lockerroom.png'
-            if programme[1] == 'Working Week': thumb = path + '/images/workingweek.png'
-            print path
-            util.addMenuItem(params['label'], link, thumb, thumb, True)
-        util.addCategory('>> Current Affairs','current-affairs')
-        util.addCategory('>> Entertainment','entertainment')
-        util.addCategory('>> Lifestyle','lifestyle')
-        util.addCategory('>> Sport','sport',path + '/images/sport.jpg')
-        util.addCategory('>> Music','music')
-        util.addCategory('>> Specials','specials')
-        util.endListing()
+    params={'programme':1}
+    params['label']= "Notts TV News Reports"
+    params['tag']="news"
+    link = util.makeLink(params)
+    util.addMenuItem(params['label'], link, 'news.png', path + '/images/news.png', True)
+    util.addMenuItem("The 6:30 Show", util.makeLink({'programme':1,'tag':'the-630-show'}), None, path + '/images/630show.png', True)
+    util.addMenuItem("Notts TV Debate", util.makeLink({'programme':1,'tag':'notts-tv-debate'}), None, path + '/images/8debate.png', True)
+    util.addMenuItem("Sports Week", util.makeLink({'programme':1,'tag':'sports-week'}), None, path + '/images/sportsweek.png', True)
+    util.addMenuItem("City of Football", util.makeLink({'programme':1,'tag':'city-of-football'}), None, path + '/images/cityoffootball.png', True)
+    util.addMenuItem("Day in the Life", util.makeLink({'programme':1,'tag':'day-in-the-life'}), None, path + '/images/dayinthelife.png', True)
+    util.addMenuItem("Digital Nation", util.makeLink({'programme':1,'tag':'digital-nation'}), None, path + '/images/digitalnation.png', True)
+    util.addMenuItem("F-Stop", util.makeLink({'programme':1,'tag':'f-stop'}), None, path + '/images/fstop.png', True)
+    util.addMenuItem("Inside Industry Week", util.makeLink({'programme':1,'tag':'inside-industry-week'}), None, path + '/images/insideindustry.png', True)
+    util.addMenuItem("Noise Floor", util.makeLink({'programme':1,'tag':'noise-floor'}), None, path + '/images/noisefloor.png', True)
+    util.addMenuItem("Nottingham Now and Then", util.makeLink({'programme':1,'tag':'nottingham-now-and-then'}), None, path + '/images/nowandthen.png', True)
+    util.addMenuItem("Sketch Up", util.makeLink({'programme':1,'tag':'sketch-up'}), None, path + '/images/sketchup.png', True)
+    util.addMenuItem("Sounding Out", util.makeLink({'programme':1,'tag':'sounding-out'}), None, path + '/images/soundingout.png', True)
+    util.addMenuItem("The Boot Room - Fan Zone", util.makeLink({'programme':1,'tag':'the-boot-room-fan-zone'}), None, path + '/images/bootroom.png', True)
+    util.addMenuItem("The Boot Room - Pro Zone", util.makeLink({'programme':1,'tag':'the-boot-room-pro-zone'}), None, path + '/images/bootroom.png', True)
+    util.addMenuItem("The Locker Room", util.makeLink({'programme':1,'tag':'the-locker-room'}), None, path + '/images/lockerroom.png', True)
+    util.addMenuItem("Working Week", util.makeLink({'programme':1,'tag':'working-week'}), None, path + '/images/workingweek.png', True)
+    util.addCategory('>> Current Affairs','current-affairs')
+    util.addCategory('>> Entertainment','entertainment')
+    util.addCategory('>> Lifestyle','lifestyle')
+    util.addCategory('>> Sport','sport',path + '/images/sport.jpg')
+    util.addCategory('>> Music','music')
+    util.addCategory('>> Specials','specials')
+    util.endListing()
 
-    else:
-        util.showError('plugin.video.nottstv', 'Could not open URL %s to create menu' % (url))	
+    #else:
+    #    util.showError('plugin.video.nottstv', 'Could not open URL %s to create menu' % (url))	
     pass
 
     
